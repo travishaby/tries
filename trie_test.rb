@@ -62,5 +62,14 @@ class TrieTest < Minitest::Test
     assert_equal ["e", "i", "s"], branches
   end
 
+  def test_suggest_words_for_start_of_word
+    trie = Trie.new
+    trie.push("longest")
+    trie.push("longs")
+    trie.push("longitude")
+
+    suggestions = ["longest", "longs", "longitude"]
+    assert_equal suggestions, trie.suggest("long")
+  end
 
 end
